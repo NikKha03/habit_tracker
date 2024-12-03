@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: HabitTracker
+  datasource:
+    url: jdbc:postgresql://45.137.212.235:5436/postgres
+    username: postgres
+    password: bJnr4cCcxN19
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
