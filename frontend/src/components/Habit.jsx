@@ -11,6 +11,7 @@ const habitSt = (color, habit, dueHabit) => {
 		<MDBListGroupItem noBorders style={{ backgroundColor: color, color: 'white' }} className='px-3 mb-2 rounded-3 d-flex justify-content-between align-items-center'>
 			<div>
 				<h5 style={{ fontWeight: 900, marginBottom: 0 }}>{habit.name}</h5>
+				<p style={{ marginBottom: 0, fontStyle: 'italic' }}>{habit.description}</p>
 				<h6 style={{ marginBottom: 0 }}>Выполнено: {`${habit.habitStatistics.length} / ${habit.countExecutions}`}</h6>
 			</div>
 
