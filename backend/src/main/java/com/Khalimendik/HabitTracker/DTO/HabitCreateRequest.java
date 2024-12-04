@@ -1,5 +1,6 @@
 package com.Khalimendik.HabitTracker.DTO;
 
+import com.Khalimendik.HabitTracker.models.Habit;
 import com.Khalimendik.HabitTracker.models.PlannedExecutionTime;
 import com.Khalimendik.HabitTracker.models.Repetition;
 import com.Khalimendik.HabitTracker.models.User;
@@ -14,6 +15,8 @@ import java.util.List;
 public class HabitCreateRequest {
 
     private User userId;
+
+    private Long habitId;
 
     private String name;
 

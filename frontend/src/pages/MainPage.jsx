@@ -58,7 +58,7 @@ export default function MainPage() {
 
 	return (
 		<>
-			<section style={{ backgroundColor: '#aaaaa8', minHeight: '100vh', height: '100%' }}>
+			<section style={{ backgroundColor: '#a6acaf', minHeight: '100vh', height: '100%' }}>
 				<Navbar />
 				<MDBContainer className='py-3'>
 					<MDBRow className='justify-content-center'>

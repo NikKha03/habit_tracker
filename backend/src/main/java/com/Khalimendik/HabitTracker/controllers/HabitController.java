@@ -30,6 +30,11 @@ public class HabitController {
         habitService.createHabit(habitCreateRequest);
     }
 
+    @PostMapping("/change")
+    public void changeHabit(@RequestBody HabitCreateRequest habitChangeRequest) {
+        habitService.changeHabit(habitChangeRequest);
+    }
+
     @GetMapping("/all")
     public List<Habit> allHabits(Principal principal) {
         User user = userService.findUser(principal.getName());

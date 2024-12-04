@@ -37,7 +37,7 @@ const redaction = (habit, redactionHabit) => {
 export default function Habit({ habit, due, status }) {
 	if (status === 1 || status === 2) {
 		if (habit.habitStatistics.length === 0) {
-			return habitSt('#a6acaf', habit, due);
+			return habitSt('#aaaaa8', habit, due);
 		}
 
 		if (habit.habitStatistics.length !== 0 && habit.habitStatistics.length < habit.countExecutions) {

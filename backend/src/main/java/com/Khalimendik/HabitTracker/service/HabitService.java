@@ -10,6 +10,8 @@ public interface HabitService {
 
     void createHabit(HabitCreateRequest habitCreateRequest);
 
+    void changeHabit(HabitCreateRequest habitChangeRequest);
+
     List<Habit> allHabits(User user);
 
     List<Habit> habitsOnTheDay(User user);

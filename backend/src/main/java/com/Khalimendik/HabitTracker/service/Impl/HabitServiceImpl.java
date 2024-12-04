@@ -43,6 +43,20 @@ public class HabitServiceImpl implements HabitService {
     }
 
     @Override
+    public void changeHabit(HabitCreateRequest habitChangeRequest) {
+        Habit habit = habitRepo.findByHabitId(habitChangeRequest.getHabitId());
+
+        habit.setName(habitChangeRequest.getName());
+        habit.setCountExecutions(habitChangeRequest.getCountExecutions());
+        habit.setRepetitionId(habitChangeRequest.getRepetitionId());
+        habit.setStartDate(habitChangeRequest.getStartDate());
+        habit.setEndDate(habitChangeRequest.getEndDate());
+        habit.setDescription(habitChangeRequest.getDescription());
+
+        habitRepo.save(habit);
+    }
+
+    @Override
     public List<Habit> allHabits(User user) {
         return habitRepo.findAllByUserId(user);
     }

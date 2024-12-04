@@ -35,8 +35,10 @@ public class Habit {
     @OneToMany(mappedBy = "habitId")
     private List<PlannedExecutionTime> executionTime;
 
+    @Column(nullable = false)
     private LocalDate startDate;
 
+    @Column(nullable = false)
     private LocalDate endDate;
 
     @OneToMany(mappedBy = "habitId")
