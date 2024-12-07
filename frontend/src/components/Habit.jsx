@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { habitDuePath } from '../ApiPath';
+import RedactionHabitModal from './RedactionHabitModal';
+import HabitStatistic from './HabitStatistic';
 
 import SettingsIcon from '@mui/icons-material/Settings';
 import { MDBIcon, MDBBtn, MDBListGroupItem } from 'mdb-react-ui-kit';
@@ -22,19 +24,25 @@ const habitSt = (color, habit, dueHabit) => {
 	);
 };
 
-const redaction = (habit, redactionHabit) => {
+const redaction = (habit, trigger) => {
+	const [isModalOpen, setModalOpen] = useState(false);
+
+	const toggleModal = () => setModalOpen(!isModalOpen);
+
 	return (
 		<MDBListGroupItem noBorders style={{ backgroundColor: ' #2980b9', color: 'white' }} className='px-3 mb-2 rounded-3 d-flex justify-content-between align-items-center'>
 			<h5 style={{ fontWeight: 900, marginBottom: 0 }}>{habit.name}</h5>
 
-			<MDBBtn floating color='white' size='lg' onClick={() => redaction()}>
+			<MDBBtn floating color='white' size='lg' onClick={toggleModal}>
 				<MDBIcon fas color='#1e1e1e' size='2x' icon='cog' />
 			</MDBBtn>
+			{isModalOpen ? <RedactionHabitModal onClose={toggleModal} optSmModal={isModalOpen} setOptSmModal={setModalOpen} habit={habit} trigger={trigger} /> : null}
 		</MDBListGroupItem>
 	);
 };
 
-export default function Habit({ habit, due, status }) {
+export default function Habit({ habit, due, status, trigger }) {
+	console.log(habit);
 	if (status === 1 || status === 2) {
 		if (habit.habitStatistics.length === 0) {
 			return habitSt('#aaaaa8', habit, due);
@@ -50,6 +58,10 @@ export default function Habit({ habit, due, status }) {
 	}
 
 	if (status === 3) {
-		return redaction(habit);
+		return redaction(habit, trigger);
+	}
+
+	if (status === 4) {
+		return <HabitStatistic habit={habit} />;
 	}
 }

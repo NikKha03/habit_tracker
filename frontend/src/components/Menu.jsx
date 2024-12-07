@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
-export default function Menu({ create, onTheDay, onTheWeek, redaction }) {
+export default function Menu({ create, onTheDay, onTheWeek, redaction, statistic }) {
 	const textStyle = { fontSize: 20, textTransform: 'none', color: 'white', fontWeight: 500 };
 	return (
 		<React.Fragment>
@@ -38,7 +38,7 @@ export default function Menu({ create, onTheDay, onTheWeek, redaction }) {
 						</Typography>
 					</Stack>
 				</Button>
-				<Button sx={{ width: '100%', marginBottom: 1 }} onClick={() => null}>
+				<Button sx={{ width: '100%', marginBottom: 1 }} onClick={() => statistic()}>
 					<Stack sx={{ width: '100%', alignItems: 'center' }} direction='row'>
 						<Typography sx={textStyle} ml={1} variant='subtitle1'>
 							Статистика

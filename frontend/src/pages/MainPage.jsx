@@ -56,6 +56,10 @@ export default function MainPage() {
 		setAction(3);
 	};
 
+	const handleClickStatistic = () => {
+		setAction(4);
+	};
+
 	return (
 		<>
 			<section style={{ backgroundColor: '#a6acaf', minHeight: '100vh', height: '100%' }}>
@@ -88,7 +92,7 @@ export default function MainPage() {
 												}}
 											>
 												{/* Tyt */}
-												<Menu create={handleClickCreate} onTheDay={handleClickOnTheDay} onTheWeek={handleClickIOnTheWeek} redaction={handleClickRedaction} />
+												<Menu create={handleClickCreate} onTheDay={handleClickOnTheDay} onTheWeek={handleClickIOnTheWeek} redaction={handleClickRedaction} statistic={handleClickStatistic} />
 											</Box>
 										</Grid>
 										<Grid

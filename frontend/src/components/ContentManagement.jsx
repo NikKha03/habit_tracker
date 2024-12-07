@@ -19,7 +19,7 @@ export default function ContentManagement({ obj }) {
 			case 3:
 				return getAllHabits();
 			case 4:
-				return null;
+				return getAllHabits();
 			case 5:
 				return null;
 		}
@@ -88,7 +88,7 @@ export default function ContentManagement({ obj }) {
 		<>
 			<MDBListGroup style={{ minWidth: '22rem' }} light>
 				{habits.map(habit => (
-					<Habit habit={habit} due={handleClickDue} status={obj} />
+					<Habit habit={habit} due={handleClickDue} status={obj} trigger={setTriggerEffect} />
 				))}
 			</MDBListGroup>
 		</>

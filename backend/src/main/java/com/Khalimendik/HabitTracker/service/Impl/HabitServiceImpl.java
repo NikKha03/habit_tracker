@@ -44,11 +44,12 @@ public class HabitServiceImpl implements HabitService {
 
     @Override
     public void changeHabit(HabitCreateRequest habitChangeRequest) {
+        Repetition repetition = repetitionRepo.findByValue(habitChangeRequest.getRepetitionValue());
         Habit habit = habitRepo.findByHabitId(habitChangeRequest.getHabitId());
 
         habit.setName(habitChangeRequest.getName());
         habit.setCountExecutions(habitChangeRequest.getCountExecutions());
-        habit.setRepetitionId(habitChangeRequest.getRepetitionId());
+//        habit.setRepetitionId(repetition);
         habit.setStartDate(habitChangeRequest.getStartDate());
         habit.setEndDate(habitChangeRequest.getEndDate());
         habit.setDescription(habitChangeRequest.getDescription());

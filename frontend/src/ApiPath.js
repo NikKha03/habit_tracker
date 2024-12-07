@@ -6,6 +6,7 @@ export const userRegPath = url + '/api/user/reg';
 export const getUserPath = url + '/api/user/principal';
 
 export const createHabitPath = url + '/api/habit/create';
+export const redactionHabitPath = url + '/api/habit/change';
 export const allHabitsPath = url + '/api/habit/all';
 export const habitOnTheDayPath = url + '/api/habit/onTheDay';
 export const habitOnTheWeekPath = url + '/api/habit/onTheWeak';

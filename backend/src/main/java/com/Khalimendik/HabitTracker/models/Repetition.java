@@ -1,5 +1,6 @@
 package com.Khalimendik.HabitTracker.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,6 +16,7 @@ public class Repetition {
 
     private String value;
 
+    @JsonIgnore()
     @OneToMany(mappedBy = "repetitionId")
     private List<Habit> habits;
 

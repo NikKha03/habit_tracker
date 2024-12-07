@@ -14,7 +14,6 @@ import Button from '@mui/material/Button';
 import { Description } from '@mui/icons-material';
 
 const saveHabit = async (header, dateStart, dateEnd, time, comment, repetition, countExecutions) => {
-	console.log(repetition);
 	const response = await axios
 		.post(
 			createHabitPath,

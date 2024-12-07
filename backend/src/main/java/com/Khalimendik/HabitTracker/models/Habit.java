@@ -25,9 +25,10 @@ public class Habit {
     @JsonIgnore()
     private User userId;
 
+
+    //    @JsonIgnore()
     @ManyToOne()
     @JoinColumn(name = "repetition_id", nullable = false)
-    @JsonIgnore()
     private Repetition repetitionId;
 
     private int countExecutions;
