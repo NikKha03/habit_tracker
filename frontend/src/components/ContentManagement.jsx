@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { MDBListGroup, MDBListGroupItem } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBListGroup, MDBListGroupItem } from 'mdb-react-ui-kit';
 
 import Habit from './Habit';
 import { allHabitsPath, habitOnTheDayPath, habitOnTheWeekPath, habitDuePath } from '../ApiPath';
@@ -86,10 +86,19 @@ export default function ContentManagement({ obj }) {
 
 	return (
 		<>
-			<MDBListGroup style={{ minWidth: '22rem' }} light>
-				{habits.map(habit => (
-					<Habit habit={habit} due={handleClickDue} status={obj} trigger={setTriggerEffect} />
-				))}
+			<MDBListGroup
+				style={{
+					overflowY: 'auto',
+					minWidth: '22rem',
+					maxHeight: '570px', // Ограничиваем высоту списка
+				}}
+				light
+			>
+				<MDBContainer style={{ overflowY: 'auto' }}>
+					{habits.map(habit => (
+						<Habit habit={habit} due={handleClickDue} status={obj} trigger={setTriggerEffect} />
+					))}
+				</MDBContainer>
 			</MDBListGroup>
 		</>
 	);

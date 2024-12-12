@@ -108,6 +108,7 @@ export default function MainPage() {
 												key={activeAction}
 												sx={{
 													display: 'flex',
+													overflowY: 'auto',
 													flexDirection: 'column',
 													width: '100%',
 													paddingLeft: '20px',

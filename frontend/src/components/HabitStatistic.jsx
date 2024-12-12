@@ -29,7 +29,7 @@ function ServerDay(props) {
 export default function HabitStatistic({ habit }) {
 	const requestAbortController = useRef(null);
 	const [isLoading, setIsLoading] = useState(false);
-	const [highlightedDays, setHighlightedDays] = useState([4, 15]);
+	const [highlightedDays, setHighlightedDays] = useState([]);
 
 	const initialValue = dayjs();
 
@@ -50,17 +50,14 @@ export default function HabitStatistic({ habit }) {
 	}, []);
 
 	return (
-		<MDBListGroupItem
-			noBorders
-			style={{ backgroundColor: ' #2980b9', color: 'white', display: 'flex', flexDirection: 'column', alignItems: 'start' }}
-			className='px-3 mb-2 rounded-3 d-flex justify-content-between align-items-center'
-		>
-			<Box style={{ width: '100%' }}>
+		<MDBListGroupItem noBorders style={{ backgroundColor: ' #2980b9', display: 'flex', flexDirection: 'column', alignItems: 'start' }} className='px-3 mb-2 rounded-3 d-flex justify-content-between align-items-center'>
+			<Box style={{ width: '100%', color: 'white' }}>
 				<h5 style={{ fontWeight: 900, marginBottom: 0 }}>{habit.name}</h5>
 			</Box>
 
-			<LocalizationProvider dateAdapter={AdapterDayjs}>
+			<LocalizationProvider style={{ paddingRight: '50%' }} dateAdapter={AdapterDayjs}>
 				<DateCalendar
+					style={{ backgroundColor: '#ffffff', borderRadius: '10px', width: '100%', paddingRight: '50%' }}
 					defaultValue={initialValue}
 					// loading={isLoading}
 					onMonthChange={handleMonthChange}
