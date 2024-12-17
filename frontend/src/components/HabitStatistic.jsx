@@ -55,7 +55,7 @@ export default function HabitStatistic({ habit }) {
 				<h5 style={{ fontWeight: 900, marginBottom: 0 }}>{habit.name}</h5>
 			</Box>
 
-			<LocalizationProvider style={{ paddingRight: '50%' }} dateAdapter={AdapterDayjs}>
+			<LocalizationProvider dateAdapter={AdapterDayjs}>
 				<DateCalendar
 					style={{ backgroundColor: '#ffffff', borderRadius: '10px', width: '100%', paddingRight: '50%' }}
 					defaultValue={initialValue}

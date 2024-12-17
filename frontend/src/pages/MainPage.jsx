@@ -69,7 +69,7 @@ export default function MainPage() {
 						<MDBCol md='9' lg='7' xl='10' className='mt-5'>
 							<MDBCard style={{ borderRadius: '15px', backgroundColor: '#1e1e1e' }}>
 								<MDBCardBody>
-									<Grid container sx={{ height: { xs: '60%', sm: '70dvh' } }}>
+									<Grid container sx={{ height: { xs: '60%', sm: '70vh' } }}>
 										<Grid
 											item
 											xs={12}
@@ -102,6 +102,7 @@ export default function MainPage() {
 											sx={{
 												flexDirection: 'column',
 												alignItems: 'start',
+												height: '100%',
 											}}
 										>
 											<Box

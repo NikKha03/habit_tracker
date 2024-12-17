@@ -90,7 +90,8 @@ export default function ContentManagement({ obj }) {
 				style={{
 					overflowY: 'auto',
 					minWidth: '22rem',
-					maxHeight: '570px', // Ограничиваем высоту списка
+					maxHeight: '70vh', // Ограничиваем высоту списка
+					height: '100%',
 				}}
 				light
 			>
