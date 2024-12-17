@@ -36,5 +36,4 @@ VALUES ('Ходить в зал', '2024-11-22', '2024-10-22', 2, 3, 1);
 INSERT INTO habit_statistic (due_date, habit_id) VALUES ('2024-11-16', 1);
 INSERT INTO habit_statistic (due_date, habit_id) VALUES ('2024-11-15', 1);
 
-
 -- добавление

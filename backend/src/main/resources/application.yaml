@@ -2,7 +2,7 @@ spring:
   application:
     name: HabitTracker
   datasource:
-    url: jdbc:postgresql://45.137.212.235:5436/postgres
+    url: jdbc:postgresql://109.196.102.221:5436/postgres
     username: postgres
     password: bJnr4cCcxN19
     driver-class-name: org.postgresql.Driver
