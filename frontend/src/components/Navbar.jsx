@@ -46,7 +46,7 @@ export default function Navbar() {
 			</MenuItem>
 			<MenuItem
 				onClick={() => {
-					window.location.href = 'http://localhost:8080/logout';
+					window.location.href = 'http://localhost:8090/logout';
 				}}
 			>
 				Выйти

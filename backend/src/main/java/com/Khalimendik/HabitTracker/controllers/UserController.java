@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -18,6 +19,11 @@ public class UserController {
     @GetMapping("/{email}")
     public User getUser(@PathVariable String email) {
         return userService.findUser(email);
+    }
+
+    @GetMapping("/all")
+    public List<User> getUsers() {
+        return userService.findAllUsers();
     }
 
     @PostMapping("/reg")

@@ -1,6 +1,7 @@
 package com.Khalimendik.HabitTracker.controllers;
 
 import com.Khalimendik.HabitTracker.DTO.HabitCreateRequest;
+import com.Khalimendik.HabitTracker.Repo.HabitRepo;
 import com.Khalimendik.HabitTracker.Repo.RepetitionRepo;
 import com.Khalimendik.HabitTracker.models.Habit;
 import com.Khalimendik.HabitTracker.models.Repetition;
@@ -21,6 +22,8 @@ public class HabitController {
 
     private HabitService habitService;
 
+    private HabitRepo habitRepo;
+
     private UserService userService;
 
     @PostMapping("/create")
@@ -39,6 +42,11 @@ public class HabitController {
     public List<Habit> allHabits(Principal principal) {
         User user = userService.findUser(principal.getName());
         return habitService.allHabits(user);
+    }
+
+    @GetMapping("/alll")
+    public List<Habit> allHabitss(Principal principal) {
+        return habitRepo.findAll();
     }
 
     @GetMapping("/onTheDay")

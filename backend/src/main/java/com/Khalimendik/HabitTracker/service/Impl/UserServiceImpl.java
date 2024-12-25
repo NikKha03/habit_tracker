@@ -8,6 +8,8 @@ import com.Khalimendik.HabitTracker.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @AllArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,4 +34,8 @@ public class UserServiceImpl implements UserService {
         return userRepo.findUserByEmail(email);
     }
 
+    @Override
+    public List<User> findAllUsers() {
+        return userRepo.findAll();
+    }
 }

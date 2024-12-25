@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import {
 	MDBCol,
@@ -22,6 +24,7 @@ import {
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
+import { getUserPath, getUsersPath } from '../ApiPath';
 import Navbar from '../components/Navbar';
 import Menu from '../components/Menu';
 import ContentManagement from '../components/ContentManagement';
@@ -38,7 +41,10 @@ const getContent = action => {
 };
 
 export default function MainPage() {
+	const [userInfoData, setUserInfoData] = useState(null);
 	const [activeAction, setAction] = useState(0);
+
+	const navigate = useNavigate();
 
 	const handleClickCreate = () => {
 		setAction(0);
@@ -60,9 +66,42 @@ export default function MainPage() {
 		setAction(4);
 	};
 
-	return (
+	const [users, setUsers] = useState(null);
+
+	const getUsers = async () => {
+		const response = await axios
+			.get(getUsersPath, {
+				withCredentials: true,
+			})
+			.then(response => {
+				setUsers(response.data);
+			})
+			.catch(error => {
+				console.error('Error fetching data: ', error);
+			});
+	};
+
+	const getUserInfo = async () => {
+		const response = await axios
+			.get(getUserPath, {
+				withCredentials: true,
+			})
+			.then(response => {
+				setUserInfoData(response.data);
+			})
+			.catch(error => {
+				console.error('Error fetching data: ', error);
+			});
+	};
+
+	useEffect(() => {
+		getUserInfo();
+		getUsers();
+	}, []);
+
+	const userPage = (
 		<>
-			<section style={{ backgroundColor: '#a6acaf', minHeight: '100vh', height: '100%' }}>
+			<section style={{ backgroundColor: '#eeeeee', minHeight: '100vh', height: '100%' }}>
 				<Navbar />
 				<MDBContainer className='py-3'>
 					<MDBRow className='justify-content-center'>
@@ -127,6 +166,49 @@ export default function MainPage() {
 					</MDBRow>
 				</MDBContainer>
 			</section>
+		</>
+	);
+
+	const adminPage = (
+		<>
+			<section style={{ backgroundColor: '#eeeeee', minHeight: '100vh', height: '100%' }}>
+				<Navbar />
+				<MDBContainer className='py-3'>
+					<MDBRow className='justify-content-center'>
+						<MDBCol md='9' lg='7' xl='10' className='mt-5'>
+							<MDBCard style={{ borderRadius: '15px', backgroundColor: '#1e1e1e' }}>
+								<MDBCardBody>
+									{users !== null
+										? users.map(user => (
+												<>
+													<MDBListGroup style={{ minWidth: '22rem' }} light className='mb-3'>
+														<MDBListGroupItem style={{ backgroundColor: '#262626', color: 'white', width: '100%', paddingLeft: '10px' }}>
+															<h6 className='fw-bold'>{user.name}</h6>
+															<h6 className='fw-bold'>UserId: {user.userId}</h6>
+														</MDBListGroupItem>
+													</MDBListGroup>
+													<MDBBtn onClick={() => navigate('/redaction-profile/', { state: user })} style={{ backgroundColor: '#2980ba', color: 'white' }} rippleColor='white' color='#2980ba' className='w-100'>
+														Управлять
+													</MDBBtn>
+													<hr />
+												</>
+										  ))
+										: null}
+								</MDBCardBody>
+							</MDBCard>
+						</MDBCol>
+					</MDBRow>
+				</MDBContainer>
+			</section>
+		</>
+	);
+
+	console.log(userInfoData);
+
+	return (
+		<>
+			{userInfoData !== null && userInfoData.roles[0].roleName === 'ROLE_USER' ? userPage : null}
+			{userInfoData !== null && userInfoData.roles[0].roleName === 'ROLE_ADMIN' ? adminPage : null}
 		</>
 	);
 }

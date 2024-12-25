@@ -1,9 +1,10 @@
-const url = 'http://localhost:8080';
+const url = 'http://localhost:8090';
 
 export const userLoginPath = url + '/login';
 
 export const userRegPath = url + '/api/user/reg';
 export const getUserPath = url + '/api/user/principal';
+export const getUsersPath = url + '/api/user/all';
 
 export const createHabitPath = url + '/api/habit/create';
 export const redactionHabitPath = url + '/api/habit/change';
