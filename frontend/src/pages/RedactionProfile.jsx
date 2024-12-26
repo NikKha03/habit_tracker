@@ -2,12 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBIcon, MDBBtn, MDBListGroupItem } from 'mdb-react-ui-kit';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardBody, MDBTypography, MDBIcon, MDBBtn, MDBListGroupItem } from 'mdb-react-ui-kit';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import Box from '@mui/material/Box';
 
 import Navbar from '../components/Navbar';
-import { getUserPath } from '../ApiPath';
 
 export default function RedactionProfile() {
 	const location = useLocation();
@@ -32,7 +30,6 @@ export default function RedactionProfile() {
 												Информация
 											</MDBTypography>
 											<MDBBtn floating color='white' size='sm' onClick={() => navigate('/habit-tracker/profile/')}>
-												{/* <MDBIcon fas color='#1e1e1e' size='2x' icon='cog' /> */}
 												<MDBIcon fas color='#1e1e1e' size='2x' icon='arrow-circle-left' />
 											</MDBBtn>
 										</MDBListGroupItem>
@@ -40,21 +37,21 @@ export default function RedactionProfile() {
 										<MDBRow className='pt-1'>
 											<MDBCol size='6' className='mb-3' style={{ width: '100%' }}>
 												<MDBTypography tag='h6'>Имя</MDBTypography>
-												{/* <MDBCardText>{userInfoData.name}</MDBCardText> */}
+
 												<OutlinedInput defaultValue={state.name} id='name' name='name' style={inputBg} />
 											</MDBCol>
 										</MDBRow>
 										<MDBRow className='pt-1'>
 											<MDBCol size='6' className='mb-3' style={{ width: '100%' }}>
 												<MDBTypography tag='h6'>Email</MDBTypography>
-												{/* <MDBCardText>{userInfoData.email}</MDBCardText> */}
+
 												<OutlinedInput defaultValue={state.email} id='email' name='email' style={inputBg} />
 											</MDBCol>
 										</MDBRow>
 										<MDBRow className='pt-1'>
 											<MDBCol size='6' className='mb-3' style={{ width: '100%' }}>
 												<MDBTypography tag='h6'>Tg</MDBTypography>
-												{/* <MDBCardText>@{userInfoData.tg}</MDBCardText> */}
+
 												<OutlinedInput defaultValue={state.tg} id='tg' name='tg' style={inputBg} />
 											</MDBCol>
 										</MDBRow>

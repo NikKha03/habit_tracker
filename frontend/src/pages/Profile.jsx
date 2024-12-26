@@ -2,24 +2,24 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBTypography, MDBIcon, MDBBtn, MDBListGroupItem } from 'mdb-react-ui-kit';
+import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBTypography, MDBIcon, MDBBtn, MDBListGroupItem } from 'mdb-react-ui-kit';
 import Box from '@mui/material/Box';
 
 import Navbar from '../components/Navbar';
 import { getUserPath } from '../ApiPath';
 
 export default function Profile() {
-	const [userInfoData, setUserInfoData] = useState({});
+	const [principalUser, setPrincipalUser] = useState({});
 
 	const navigate = useNavigate();
 
-	const getUserInfo = async () => {
+	const getPrincipalUser = async () => {
 		const response = await axios
 			.get(getUserPath, {
 				withCredentials: true,
 			})
 			.then(response => {
-				setUserInfoData(response.data);
+				setPrincipalUser(response.data);
 			})
 			.catch(error => {
 				console.error('Error fetching data: ', error);
@@ -27,7 +27,7 @@ export default function Profile() {
 	};
 
 	useEffect(() => {
-		getUserInfo();
+		getPrincipalUser();
 	}, []);
 
 	return (
@@ -44,7 +44,7 @@ export default function Profile() {
 											<MDBTypography tag='h6' style={{ marginBottom: 0 }}>
 												Информация
 											</MDBTypography>
-											<MDBBtn floating color='white' size='sm' onClick={() => navigate('/habit-tracker/redaction-profile/', { state: userInfoData })}>
+											<MDBBtn floating color='white' size='sm' onClick={() => navigate('/habit-tracker/redaction-profile/', { state: principalUser })}>
 												<MDBIcon fas color='#1e1e1e' size='2x' icon='cog' />
 											</MDBBtn>
 										</MDBListGroupItem>
@@ -52,19 +52,19 @@ export default function Profile() {
 										<MDBRow className='pt-1'>
 											<MDBCol size='6' className='mb-3' style={{ width: '100%' }}>
 												<MDBTypography tag='h6'>Имя</MDBTypography>
-												<MDBCardText>{userInfoData.name}</MDBCardText>
+												<MDBCardText>{principalUser.name}</MDBCardText>
 											</MDBCol>
 										</MDBRow>
 										<MDBRow className='pt-1'>
 											<MDBCol size='6' className='mb-3' style={{ width: '100%' }}>
 												<MDBTypography tag='h6'>Email</MDBTypography>
-												<MDBCardText>{userInfoData.email}</MDBCardText>
+												<MDBCardText>{principalUser.email}</MDBCardText>
 											</MDBCol>
 										</MDBRow>
 										<MDBRow className='pt-1'>
 											<MDBCol size='6' className='mb-3' style={{ width: '100%' }}>
 												<MDBTypography tag='h6'>Tg</MDBTypography>
-												<MDBCardText>@{userInfoData.tg}</MDBCardText>
+												<MDBCardText>@{principalUser.tg}</MDBCardText>
 											</MDBCol>
 										</MDBRow>
 									</MDBCardBody>
