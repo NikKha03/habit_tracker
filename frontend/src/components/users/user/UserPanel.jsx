@@ -24,8 +24,6 @@ const getContent = action => {
 export default function UserPanel() {
 	const [activeAction, setAction] = useState(0);
 
-	const navigate = useNavigate();
-
 	const handleClickCreate = () => {
 		setAction(0);
 	};

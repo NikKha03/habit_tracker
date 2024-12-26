@@ -17,7 +17,7 @@ export default function UnauthorizedUserPanel() {
 							<MDBCard style={{ borderRadius: '15px', backgroundColor: '#1e1e1e', color: 'white' }}>
 								<MDBCardBody>
 									<h2>Войдите в профиль или зарегистрируйтесь!</h2>
-									<a href={userLoginPath}>Войти</a> / <a href='#'>Зарегистрироваться</a>
+									<a href={userLoginPath}>Войти</a> / <a href='/habit-tracker/auth/reg/'>Зарегистрироваться</a>
 								</MDBCardBody>
 							</MDBCard>
 						</MDBCol>

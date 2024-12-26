@@ -55,24 +55,21 @@ export default function CreateHabit() {
 		<form onSubmit={handleSubmitSave}>
 			<List sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
 				<Box sx={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
-					<Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+					<Box sx={{ display: 'flex', flexDirection: 'column', width: '70%', marginRight: 1 }}>
 						<Typography sx={textStyle}>🔠 Заголовок</Typography>
 						<OutlinedInput id='header' name='header' style={inputBg} />
 					</Box>
-				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
-					<Box sx={{ display: 'flex', flexDirection: 'column', width: '50%', marginTop: 1, marginRight: 1 }}>
-						<Typography sx={textStyle}>🔢 Количество повторений</Typography>
-						<OutlinedInput id='count' name='count' style={{ backgroundColor: '#262626', color: 'white' }} />
-					</Box>
-					<Box sx={{ display: 'flex', flexDirection: 'column', width: '50%', marginTop: 1, marginLeft: 1 }}>
+					<Box sx={{ display: 'flex', flexDirection: 'column', width: '30%', marginLeft: 1 }}>
 						<Typography sx={textStyle}>📂 Категория</Typography>
 						<HabitRepetition change={handleChangeCategory} value={selectedValue} />
 					</Box>
 				</Box>
-
 				<Box sx={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
-					<Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', marginTop: 1 }}>
+					<Box sx={{ display: 'flex', flexDirection: 'column', width: '45%', marginTop: 1, marginRight: 1 }}>
+						<Typography sx={textStyle}>🔢 Количество повторений</Typography>
+						<OutlinedInput id='count' name='count' style={{ backgroundColor: '#262626', color: 'white' }} />
+					</Box>
+					<Box sx={{ display: 'flex', flexDirection: 'column', width: '55%', marginTop: 1, marginLeft: 1 }}>
 						<Typography sx={textStyle}>🗓️ Период формирования привычки</Typography>
 						<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 							<OutlinedInput id='date' name='dateStart' placeholder='гггг-мм-дд' style={{ backgroundColor: '#262626', color: 'white', width: '47.5%' }} />
@@ -80,6 +77,17 @@ export default function CreateHabit() {
 							<OutlinedInput id='date' name='dateEnd' placeholder='гггг-мм-дд' style={{ backgroundColor: '#262626', color: 'white', width: '47.5%' }} />
 						</Box>
 					</Box>
+				</Box>
+
+				<Box sx={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+					{/* <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', marginTop: 1 }}>
+						<Typography sx={textStyle}>🗓️ Период формирования привычки</Typography>
+						<Box sx={{ display: 'flex', flexDirection: 'row' }}>
+							<OutlinedInput id='date' name='dateStart' placeholder='гггг-мм-дд' style={{ backgroundColor: '#262626', color: 'white', width: '47.5%' }} />
+							<h5 style={{ fontSize: 20, textTransform: 'none', color: 'white', fontWeight: 900, width: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>—</h5>
+							<OutlinedInput id='date' name='dateEnd' placeholder='гггг-мм-дд' style={{ backgroundColor: '#262626', color: 'white', width: '47.5%' }} />
+						</Box>
+					</Box> */}
 				</Box>
 
 				{/* <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
