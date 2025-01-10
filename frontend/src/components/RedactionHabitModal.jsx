@@ -100,6 +100,9 @@ export default function RedactionHabitModal({ onClose, optSmModal, setOptSmModal
 								<Button type='submitSave' variant='contained' color='success' sx={{ width: '100%', marginTop: 1 }}>
 									Сохранить
 								</Button>
+								<Button type='submitDelete' variant='contained' color='error' sx={{ width: '100%', marginTop: 1 }}>
+									Удалить
+								</Button>
 							</form>
 						</MDBModalBody>
 					</MDBModalContent>

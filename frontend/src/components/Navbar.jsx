@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { userLogoutPath } from '../ApiPath';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -39,14 +42,14 @@ export default function Navbar() {
 		>
 			<MenuItem
 				onClick={() => {
-					location.href = '/habit-tracker/profile';
+					window.location.href = '/habit-tracker/profile/';
 				}}
 			>
 				Профиль
 			</MenuItem>
 			<MenuItem
 				onClick={() => {
-					window.location.href = 'http://localhost:8090/logout';
+					window.location.href = userLogoutPath;
 				}}
 			>
 				Выйти
@@ -59,14 +62,17 @@ export default function Navbar() {
 			<AppBar position='static' sx={{ paddingLeft: 0.8, paddingRight: 0.8, backgroundColor: '#1e1e1e' }}>
 				<Toolbar>
 					<Typography
+						onClick={() => {
+							window.location.href = '/habit-tracker/main/';
+						}}
 						component='a'
-						href='http://localhost:5173/habit-tracker/main'
 						variant='h4'
 						noWrap
 						sx={{
 							display: {
 								xs: 'none',
 								sm: 'block',
+								cursor: 'pointer',
 								color: 'white',
 								'&:hover': {
 									color: 'inherit', // Отключает изменение цвета

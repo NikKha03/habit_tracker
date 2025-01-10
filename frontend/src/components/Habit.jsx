@@ -11,7 +11,7 @@ import { MDBIcon, MDBBtn, MDBListGroupItem } from 'mdb-react-ui-kit';
 const habitSt = (color, habit, dueHabit) => {
 	return (
 		<MDBListGroupItem noBorders style={{ overflowY: 'auto', backgroundColor: color, color: 'white' }} className='px-3 mb-2 rounded-3 d-flex justify-content-between align-items-center'>
-			<div>
+			<div style={{ width: '90%' }}>
 				<h5 style={{ fontWeight: 900, marginBottom: 0 }}>{habit.name}</h5>
 				<p style={{ marginBottom: 0, fontStyle: 'italic' }}>{habit.description}</p>
 				<h6 style={{ marginBottom: 0 }}>Выполнено: {`${habit.habitStatistics.length} / ${habit.countExecutions}`}</h6>

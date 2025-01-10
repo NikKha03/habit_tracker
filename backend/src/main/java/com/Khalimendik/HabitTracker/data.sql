@@ -15,6 +15,21 @@ VALUES (2, 'on the weak');
 INSERT INTO users (user_id, email, name, password, tg)
 VALUES (1, 'khalimendik@example.com', 'Коля Халимендик', 'user', 'kolya_kha');
 
+INSERT INTO users (email, name, password, tg)
+VALUES ('test1@example.com', 'Ntcn', 'user', 'koa');
+
+INSERT INTO users (email, name, password, tg)
+VALUES ('test2@example.com', 'Ntcn', 'user', 'koa');
+
+INSERT INTO users (email, name, password, tg)
+VALUES ('test3@example.com', 'Ntcn', 'user', 'koa');
+
+INSERT INTO users (email, name, password, tg)
+VALUES ('test4@example.com', 'Ntcn', 'user', 'koa');
+
+INSERT INTO users (email, name, password, tg)
+VALUES ('test5@example.com', 'Ntcn', 'user', 'koa');
+
 -- добавление связки пользователя с ролями
 INSERT INTO user_roles (role_id, user_id)
 VALUES (1, 1);
@@ -33,7 +48,9 @@ INSERT INTO habits (name, end_date, start_date, repetition_id, count_executions,
 VALUES ('Ходить в зал', '2024-11-22', '2024-10-22', 2, 3, 1);
 
 -- добавление выполнений по привычке (HabitStatistic)
-INSERT INTO habit_statistic (due_date, habit_id) VALUES ('2024-11-16', 1);
-INSERT INTO habit_statistic (due_date, habit_id) VALUES ('2024-11-15', 1);
+INSERT INTO habit_statistic (due_date, habit_id)
+VALUES ('2024-11-16', 1);
+INSERT INTO habit_statistic (due_date, habit_id)
+VALUES ('2024-11-15', 1);
 
 -- добавление

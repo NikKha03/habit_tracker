@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { deleteUserPath, userLogoutPath } from '../ApiPath';
+
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardBody, MDBTypography, MDBIcon, MDBBtn, MDBListGroupItem } from 'mdb-react-ui-kit';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
@@ -10,8 +12,40 @@ import Navbar from '../components/Navbar';
 export default function RedactionProfile() {
 	const location = useLocation();
 	const { state } = location;
+	let stateRoles = [];
 
 	const navigate = useNavigate();
+
+	const deleteUser = async userId => {
+		const response = await axios
+			.delete(deleteUserPath(userId), {
+				withCredentials: true,
+			})
+			.catch(error => {
+				console.error('Error fetching data: ', error);
+			});
+	};
+
+	const handelClickDeleteUser = id => {
+		// deleteUser(id);
+		if (state !== null && Object.keys(state).length > 0) {
+			console.log(state);
+			let i = 0;
+			while (i < state.roles.length) {
+				stateRoles.push(state.roles[i].roleName);
+				i++;
+			}
+		}
+
+		console.log(stateRoles);
+
+		if (stateRoles.includes('ROLE_ADMIN')) {
+			navigate('/habit-tracker/main/');
+		}
+		if (stateRoles.includes('ROLE_USER')) {
+			window.location.href = userLogoutPath;
+		}
+	};
 
 	const inputBg = { backgroundColor: '#262626', color: 'white', width: '100%' };
 
@@ -55,8 +89,11 @@ export default function RedactionProfile() {
 												<OutlinedInput defaultValue={state.tg} id='tg' name='tg' style={inputBg} />
 											</MDBCol>
 										</MDBRow>
-										<MDBBtn color='success' style={{ width: '100%', backgroundColor: 'green' }}>
+										<MDBBtn color='success' style={{ width: '100%', marginBottom: '6px' }}>
 											Сохранить изменения
+										</MDBBtn>
+										<MDBBtn onClick={() => handelClickDeleteUser(state.userId)} color='danger' style={{ width: '100%' }}>
+											Удалить
 										</MDBBtn>
 									</MDBCardBody>
 								</MDBCol>

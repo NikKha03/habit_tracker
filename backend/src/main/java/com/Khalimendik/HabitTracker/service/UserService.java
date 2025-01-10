@@ -11,6 +11,10 @@ public interface UserService {
 
     User findUser(String email);
 
+    User findUser(Long id);
+
     List<User> findAllUsers();
+
+    void deleteUser(Long userId);
 
 }

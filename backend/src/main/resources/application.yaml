@@ -1,5 +1,8 @@
 server:
-  port: 8090
+  port: 8080
+frontend:
+  login-page: http://109.196.102.221/habit-tracker/auth/login/
+  main-page: http://109.196.102.221/habit-tracker/main/
 spring:
   application:
     name: HabitTracker

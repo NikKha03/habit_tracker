@@ -1,5 +1,6 @@
 package com.Khalimendik.HabitTracker.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -19,6 +20,24 @@ import java.util.List;
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    @Value("${frontend.main-page}")
+    private String frontendMainPage;
+
+    @Value("${frontend.login-page}")
+    private String frontendLoginPage;
+
+//    @Bean
+//    public ServletContextInitializer servletContextInitializer() {
+//        return servletContext -> {
+//            SessionCookieConfig sessionCookieConfig = servletContext.getSessionCookieConfig();
+//            sessionCookieConfig.setName("JSESSIONID");
+//            sessionCookieConfig.setDomain("sharpbubbles.online");
+//            sessionCookieConfig.setPath("/");
+//            sessionCookieConfig.setHttpOnly(true);
+//            sessionCookieConfig.setSecure(true); // Если используется HTTPS
+//        };
+//    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -30,11 +49,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeHttpRequests -> authorizeHttpRequests
                         .requestMatchers("/**").permitAll())
                 .formLogin(loginConfigurer -> loginConfigurer
-                        .defaultSuccessUrl("http://localhost:5173/habit-tracker/main")
+                        .defaultSuccessUrl(frontendMainPage)
                 )
                 .logout(logoutConfigurer -> logoutConfigurer
                         .logoutUrl("/logout") // URL для выхода
-                        .logoutSuccessUrl("/login") // URL перенаправления после успешного выхода
+                        .logoutSuccessUrl(frontendLoginPage) // URL перенаправления после успешного выхода
                         .invalidateHttpSession(true) // Уничтожаем сессию
                         .deleteCookies("JSESSIONID") // Удаляем куки;
                 );
@@ -45,7 +64,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:8080", "http://192.168.43.53:8080", "http://192.168.43.53:5173", "http://10.7.0.2:8080"));
+        configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:8080", "http://10.7.0.2:8080", "http://109.196.102.221:8080", "http://109.196.102.221:5175", "http://109.196.102.221"));
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(true);
